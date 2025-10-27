@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!--
+    BioSensys Static Site Starter — single-file HTML
+    Host on Cloudflare Pages, GitHub Pages, Netlify, or Vercel.
+
+    ✦ How to use:
+      1) Replace TEXT marked with 🔧 TODO.
+      2) Swap the placeholder YouTube VIDEO_ID in the hero <iframe> with your real one.
+      3) If you prefer self-hosted video, see the commented <video> block below.
+      4) To enable the contact form on Netlify, keep data-netlify="true".
+      5) For Cloudflare Web Analytics, paste the script before </body> (commented near bottom).
+
+    Brand palette (CSS variables below):
+      --bs-ink:        #333333
+      --bs-deep:       #1F4D62
+      --bs-ocean:      #01377D
+      --bs-teal:       #4F9F8F
+      --bs-mint:       #B5FCCF
+      --bs-white:      #FFFFFF
+
+    Fonts: Using Google Fonts (Poppins + Inter) as AGEO substitute look-alikes.
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BioSensys — Continuous Biosensing for Critical Care</title>
+  <meta name="description" content="BioSensys is developing a multi‑analyte continuous biosensing platform (lactate, glucose, pH) to support real‑time decision‑making in critical care." />
+  <meta name="theme-color" content="#1F4D62" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BioSensys — Continuous Biosensing" />
+  <meta property="og:description" content="Multi‑analyte continuous biosensing for ICU decision support." />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:url" content="https://🔧TODO-your-domain.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon placeholders (replace with your files when ready) -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bs-ink:  #333333;
+      --bs-deep: #1F4D62;
+      --bs-ocean:#01377D;
+      --bs-teal: #4F9F8F;
+      --bs-mint: #B5FCCF;
+      --bs-white:#FFFFFF;
+
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --maxw: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--bs-ink);
+      font: 400 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: #f7fafb;
+    }
+    a { color: var(--bs-ocean); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout helpers */
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+    .grid { display: grid; gap: 20px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(180%) blur(8px);
+      background: rgba(255,255,255,0.8);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:600; color: var(--bs-deep); }
+    .brand-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--bs-teal), var(--bs-ocean)); box-shadow: var(--shadow); }
+    nav ul { list-style: none; display: flex; gap: 20px; padding: 0; margin: 0; }
+    nav a { font-weight: 500; color: var(--bs-ink); opacity: 0.9; }
+    .menu-btn { display:none; }
+
+    @media (max-width: 860px) {
+      nav ul { display: none; }
+      .menu-btn { display:block; background: none; border:1px solid rgba(0,0,0,0.12); border-radius: 10px; padding: 6px 10px; }
+      .mobile-nav { display: none; }
+      .mobile-nav.open { display:block; }
+      .mobile-nav a { display:block; padding:12px 0; border-bottom:1px solid rgba(0,0,0,0.06); color: var(--bs-ink); }
+    }
+
+    /* Hero */
+    .hero { padding: 72px 0 36px; background:
+      radial-gradient(1200px 400px at 70% -10%, rgba(79,159,143,0.25), transparent 60%),
+      radial-gradient(800px 300px at -10% 10%, rgba(1,55,125,0.20), transparent 60%),
+      linear-gradient(0deg, #ffffff, #ffffff);
+    }
+    .hero .content { display:grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; }
+    .eyebrow { font: 600 13px/1 Poppins, Inter; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bs-teal); }
+    h1 { font: 700 40px/1.15 Poppins, Inter; color: var(--bs-deep); margin: 14px 0 10px; }
+    .lead { font-size: 18px; opacity: 0.95; }
+    .cta-row { display:flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius: 12px; font-weight:600; border:1px solid transparent; }
+    .btn.primary { background: var(--bs-ocean); color: #fff; box-shadow: var(--shadow); }
+    .btn.secondary { background: #fff; color: var(--bs-ocean); border-color: rgba(1,55,125,0.18); }
+
+    .video-card { background:#fff; border:1px solid rgba(0,0,0,0.06); border-radius: var(--radius); box-shadow: var(--shadow); overflow:hidden; }
+    .video-card .ratio { position: relative; width: 100%; padding-top: 56.25%; }
+    .video-card iframe, .video-card video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+    @media (max-width: 980px) {
+      .hero .content { grid-template-columns: 1fr; }
+      h1 { font-size: 34px; }
+    }
+
+    /* Sections */
+    section { padding: 64px 0; }
+    section.alt { background: #ffffff; border-top:1px solid rgba(0,0,0,0.06); border-bottom:1px solid rgba(0,0,0,0.06); }
+    h2 { font: 700 28px/1.2 Poppins, Inter; color: var(--bs-deep); margin: 0 0 18px; }
+    .kicker { color: var(--bs-teal); font-weight:600; margin-bottom: 6px; text-transform: uppercase; letter-spacing:0.06em; font-size: 12px; }
+
+    .card-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background:#fff; border:1px solid rgba(0,0,0,0.06); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+    .card h3 { margin-top: 0; font: 600 18px/1.3 Inter; color: var(--bs-ocean); }
+
+    @media (max-width: 860px) { .card-grid { grid-template-columns: 1fr; } }
+
+    /* About */
+    .about { display:grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items:center; }
+    .about .panel { background: #fff; border:1px solid rgba(0,0,0,0.06); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px; }
+    @media (max-width: 980px) { .about { grid-template-columns: 1fr; } }
+
+    /* Contact */
+    form { display:grid; gap: 12px; }
+    label { font-weight: 600; }
+    input, textarea { width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,0,0,0.16); font: inherit; }
+    textarea { min-height: 120px; }
+
+    /* Footer */
+    footer { padding: 36px 0; background: #0f2330; color: #d6e2e9; }
+    .foot { display:flex; gap: 16px; flex-wrap: wrap; align-items:center; justify-content: space-between; }
+    .tag { display:inline-block; padding:4px 10px; background: rgba(181,252,207,0.14); border:1px solid rgba(181,252,207,0.25); border-radius: 999px; color:#b9f7d3; font-size: 12px; }
+
+    /* Subtle entrance animation (respects reduced motion) */
+    @media (prefers-reduced-motion: no-preference) {
+      [data-fade] { opacity: 0; transform: translateY(8px); animation: fadeIn 700ms ease 120ms forwards; }
+      @keyframes fadeIn { to { opacity: 1; transform: none; } }
+    }
+  </style>
+</head>
+<body>
+  <header aria-label="Site header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="BioSensys home">
+        <span class="brand-logo" aria-hidden="true"></span>
+        <span>BioSensys</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#technology">Technology</a></li>
+          <li><a href="#applications">Applications</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="menu-btn" aria-expanded="false" aria-controls="mobileNav">Menu</button>
+    </div>
+    <div id="mobileNav" class="container mobile-nav" role="dialog" aria-modal="false" aria-label="Mobile Navigation">
+      <a href="#technology">Technology</a>
+      <a href="#applications">Applications</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container content" data-fade>
+        <div>
+          <div class="eyebrow">Continuous Biosensing</div>
+          <h1>Real‑time, multi‑analyte sensing for critical care decisions</h1>
+          <p class="lead">We’re developing a continuous biosensing platform measuring <strong>lactate</strong>, <strong>glucose</strong>, and <strong>pH</strong> with seamless data delivery to existing hospital monitors—designed to improve recognition of deterioration and guide timely interventions.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#contact">Request a conversation</a>
+            <a class="btn secondary" href="#technology">How it works</a>
+          </div>
+        </div>
+        <div>
+          <figure class="video-card" aria-label="Overview video">
+            <div class="ratio">
+              <!-- 🔧 TODO: Replace VIDEO_ID with your YouTube/Vimeo ID -->
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="BioSensys overview video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+
+              <!--
+              Alternative: self-hosted MP4 (larger file sizes; consider CDN)
+              <video controls muted poster="/video-poster.jpg">
+                <source src="/assets/biosensys_overview.mp4" type="video/mp4">
+              </video>
+              -->
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology -->
+    <section id="technology" class="alt">
+      <div class="container" data-fade>
+        <div class="kicker">Technology</div>
+        <h2>Electrochemical sensing with a modern signal chain</h2>
+        <p>Our platform couples proven enzyme‑based electrochemistry with a robust analog front end and wireless telemetry. Data streams securely to existing bedside monitors and clinical systems at no additional software cost.</p>
+        <div class="card-grid" aria-label="Technology features">
+          <article class="card">
+            <h3>Multi‑Analyte Patch</h3>
+            <p>Disposable sensor measures lactate, glucose, and pH continuously. Designed for ICU workflows with easy application and reliable adhesion.</p>
+          </article>
+          <article class="card">
+            <h3>Secure Wireless</h3>
+            <p>Low‑power Bluetooth LE integrates with hospital infrastructure. On‑device filtering and smoothing ensure clean, actionable signals.</p>
+          </article>
+          <article class="card">
+            <h3>Seamless Data</h3>
+            <p>Device data appears on existing monitors—no new dashboards required. Clinical software is included at no additional charge.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Applications -->
+    <section id="applications">
+      <div class="container" data-fade>
+        <div class="kicker">Clinical Focus</div>
+        <h2>Built for high‑stakes care settings</h2>
+        <div class="card-grid" aria-label="Use cases">
+          <article class="card">
+            <h3>Sepsis & Shock</h3>
+            <p>Trend lactate alongside hemodynamics to support early recognition and resuscitation decisions.</p>
+          </article>
+          <article class="card">
+            <h3>Multi‑Organ Failure</h3>
+            <p>Continuous pH and metabolic context to inform escalation and therapy adjustments.</p>
+          </article>
+          <article class="card">
+            <h3>Peri‑operative & Post‑op</h3>
+            <p>Detect deterioration sooner in at‑risk patients with continuous analyte monitoring.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="alt">
+      <div class="container about" data-fade>
+        <div class="panel">
+          <div class="kicker">About</div>
+          <h2>Creative, lean, and outcomes‑driven</h2>
+          <p>BioSensys is an early‑stage team building a practical biosensing platform that fits today’s ICU. We focus on exceptional execution, transparent ROI, and clinical impact.</p>
+          <ul>
+            <li>Class II IVD regulatory path</li>
+            <li>Software included; revenue via disposable sensor</li>
+            <li>Target launch markets: hospital ICUs</li>
+          </ul>
+        </div>
+        <div class="panel" aria-label="Contact teaser">
+          <h3 style="margin-top:0;color:var(--bs-ocean);">Collaborators & clinical partners</h3>
+          <p>We’re actively exploring pilot sites and research collaborations. If you’re a clinician, biomedical engineer, or potential partner, we’d love to connect.</p>
+          <p><a class="btn secondary" href="#contact">Get in touch</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container" data-fade>
+        <div class="kicker">Contact</div>
+        <h2>Request a conversation</h2>
+        <p>Share a few details and we’ll follow up. This form works with Netlify out of the box; for other hosts, wire it to your preferred form service or use a mailto link.</p>
+
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
+          <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px;">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
+          <div>
+            <label for="org">Organization (optional)</label>
+            <input id="org" name="organization" />
+          </div>
+          <div>
+            <label for="msg">Message</label>
+            <textarea id="msg" name="message" required></textarea>
+          </div>
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+
+        <p style="margin-top:14px;font-size:14px;opacity:0.8;">Prefer email? <a href="mailto:contact@🔧TODO-your-domain.com">contact@🔧TODO-your-domain.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="brand-logo" aria-hidden="true"></span>
+        <strong>BioSensys</strong>
+      </div>
+      <div class="tag">Early access program</div>
+      <div>© <span id="y"></span> BioSensys · <a href="#top" style="color:#b9f7d3;">Back to top</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.querySelector('.menu-btn');
+    const mobile = document.getElementById('mobileNav');
+    btn?.addEventListener('click', () => {
+      const open = mobile.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Year stamp
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Cloudflare Web Analytics (optional) -->
+  <!--
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "🔧TODO-analytics-token"}'></script>
+  -->
+</body>
+</html>
