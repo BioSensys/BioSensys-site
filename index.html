@@ -37,8 +37,10 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon placeholders (replace with your files when ready) -->
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <!-- Place your assets at the repo root or in /assets and adjust paths as needed -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -83,7 +85,7 @@
     }
     .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .brand { display:flex; align-items:center; gap:12px; font-weight:600; color: var(--bs-deep); letter-spacing: 0.2px; }
-    .brand-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--bs-teal), var(--bs-ocean)); box-shadow: var(--shadow); }
+    .brand-logo { width: 36px; height: 36px; display:block; border-radius: 8px; box-shadow: var(--shadow); object-fit: contain; background: none; }
     nav ul { list-style: none; display: flex; gap: 20px; padding: 0; margin: 0; }
     nav a { font-weight: 600; color: var(--bs-ink); opacity: 0.95; }
     .menu-btn { display:none; }
@@ -163,7 +165,7 @@
   <header aria-label="Site header">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="BioSensys home">
-        <span class="brand-logo" aria-hidden="true"></span>
+        <img class="brand-logo" src="/assets/logo.svg" alt="BioSensys logo" />
         <span>BioSensys</span>
       </a>
       <nav aria-label="Primary">
@@ -320,7 +322,7 @@
   <footer>
     <div class="container foot">
       <div style="display:flex;align-items:center;gap:10px;">
-        <span class="brand-logo" aria-hidden="true"></span>
+        <img class="brand-logo" src="/assets/logo.svg" alt="BioSensys logo" />
         <strong>BioSensys</strong>
       </div>
       <div class="tag">Early access program</div>
